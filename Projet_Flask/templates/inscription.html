@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>iscription</title>
+</head>
+<style>
+body {
+	text-align: center;
+	font-family: Arial;
+}	
+</style>
+<body>
+	<h1>Inscription<h1>
+	<form action="{{ url_login('inscription') }}" method="POST">
+		<input type="text" name="nom" id="nom" placeholder="pseudo" required><br/>
+		<input type="password" name="motdepasse" id="motdepasse" placeholder="mot de passse" required><br/>
+		<input type="submit" name="submit" value="inscription" />
+ 	</form>
+ 	<p>{{ msg }}</p>
+</body>
+</html>
