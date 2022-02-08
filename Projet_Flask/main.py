@@ -14,7 +14,11 @@ app.config['MYSQL_PASSWORD'] = ""
 app.config['MYSQL_db'] = "Projet_Flask"
 mysql = MySQL(app)
 # pour générer une page web dynamique
-@app.route("/", methods=['GET', 'POST'])
+@app.route('/')
+def index():
+	return flask.redirect(url_for('accueil'))
+# pour générer une page web dynamique
+@app.route("/connection", methods=['GET', 'POST'])
 def connection():
 	msg_error = ""
 	if flask.request.method == "POST" and  "nom" in flask.request.form and "motdepasse" in flask.request.form:
@@ -27,12 +31,12 @@ def connection():
 			flask.session["log"] = True
 			flask.session["id"] = user["id"]
 			flask.session["nom"] = user["nom"]
-			return flask.redirect("/home")
+			return flask.redirect("/accueil")
 		else:
 			msg_error = "Oualalal il y a un problème, essaye de recommencer !"
 	return flask.render_template("connection.html", msg=msg_error)
 # pour générer une page web dynamique
-@app.route('deconnection')
+@app.route('/deconnection')
 def deconnection():
 	flask.session.pop("log", None)
 	flask.session.pop("id", None)
