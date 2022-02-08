@@ -31,14 +31,14 @@ def connection():
 		else:
 			msg_error = "Oualalal il y a un problème, essaye de recommencer !"
 	return flask.render_template("connection.html", msg=msg_error)
-
+# pour générer une page web dynamique
 @app.route('deconnection')
 def deconnection():
 	flask.session.pop("log", None)
 	flask.session.pop("id", None)
 	flask.session.pop("nom", None)
 	return flask.redirect(url_for('connection'))
-
+# pour générer une page web dynamique
 @app.route('/inscription', methods=['GET', 'POST'])
 def inscription():
 	msg_error = ""
@@ -60,7 +60,7 @@ def inscription():
 			mysql.connection.commit()
 			return flask.redirect(url_for('connection'))
 	return flask.render_template("inscription.html", msg=msg_error)
-
+# pour générer une page web dynamique
 @app.route('/accueil')
 def accueil():
 	if "log" in flask.session:
@@ -68,5 +68,6 @@ def accueil():
 		return flask.render_template('accueil.html', nom=nom)
 	else:
 		return flask.redirect(url_for("connection"))
+	
 if __name__ == "__name__":
 	app.run(host="0.0.0.0", port=1664, debug=True)
