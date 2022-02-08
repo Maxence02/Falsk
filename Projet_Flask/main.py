@@ -14,7 +14,7 @@ app.config['MYSQL_PASSWORD'] = ""
 app.config['MYSQL_db'] = "Projet_Flask"
 mysql = MySQL(app)
 # pour générer une page web dynamique
-@app.route("/", methods=['GET' 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def connection():
 	msg_error = ""
 	if flask.request.method == "POST" and  "nom" in flask.request.form and "motdepasse" in flask.request.form:
