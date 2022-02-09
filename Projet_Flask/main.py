@@ -50,7 +50,7 @@ def inscription():
 		nom = flask.request.form["nom"]
 		motdepasse = flask.request.form["motdepasse"]
 		cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-		cursor.execute("SELECT * FROM users WHERE nom = %s", (num,))
+		cursor.execute("SELECT * FROM users WHERE nom = %s", (nom,))
 		user = cursor.fetchone()
 		if user:
 			msg_error = "nom d'utilisateur deja pris prend en un autre !"
